@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>DS3 As 2</title>
+        <meta name="description" content="DS3 As 2">
+        <script src="/js/aframe.min.js"></script>
+        <script src="/js/aframe-environment-component.min.js"></script>
+        <script src="/js/spawn-candle.js"></script>
+        <script src="/js/dragDrop.js"></script>
+        <!-- need a user gesture to allow sound on some browsers i.e. iOS -->
+      <link rel="stylesheet" href="/css/user-gesture.css">
+
+
+    </head>
+
+
+    <body>
+        <a-scene>
+
+        <!--Background-->
+        <a-entity environment="preset:forest"></a-entity>
+
+        <!--needed for mouse-->
+        <a-entity camera wasd-controls look-controls position="0 1.6 0">
+            <a-entity cursor="rayOrigin:mouse;" raycaster="far:20; interval:200; objects:.interactive"></a-entity>
+        </a-entity>
+
+
+        <!--Needed for VR-->
+        <a-entity hand controls laser-controls = "hand: right" raycaster = "far: 2, objects: .clickable"></a-entity>
+
+
+        <a-entity id = "candles"></a-entity> <!--This is where the instantiated candles show up-->
+
+        <a-entity id="universal_button" class = "clickable">
+            <a-entity class="button interactive"  position="0 0.6 0" geometry="primitive:cylinder; radius:0.15; height:0.2;" material="color:rgb(255, 100, 100)"
+                    spawn
+                    animation__mouseenter="property:material.color; type:color; to:rgb(255, 0, 0); startEvents:mouseenter; dur:200"
+                    animation__mouseleave="property:material.color; type:color; to:rgb(255, 100, 100); startEvents:mouseleave; dur:200"
+                    animation__click="property:position.y; from:0.55; to:0.6; startEvents:click; dur:300"></a-entity>
+
+                    
+
+
+            <a-entity position="0 0.3 0" geometry="primitive:box; width:0.5; depth:0.5; height:0.6;" material="color:rgb(255, 255, 255)"></a-entity>
+        </a-entity>
+        </a-scene>
+    </body>
+</html>
